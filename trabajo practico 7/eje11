@@ -1,0 +1,19 @@
+;Dado el siguiente código en hexadecimal, es necesario reordenarlo y
+;escribir las instrucciones para poder compilarlo y ejecutarlo en el
+;simulador (revisar la tabla con los códigos de operación):
+;Compruebe utilizando el monitor de memoria si el código del
+;programa es almacenado correctamente.
+;   Address     Hexdump
+;   $0605       a9 03
+;   $0602       8d 20 02
+;   $0600       a9 09
+;   $060c       8d 26 02
+;   $0607       8d 24 02
+;   $060a       a9 09
+
+$0600       lda #$09
+$0602       sta $0220
+$0605       lda #$03
+$0607       sta $0224
+$060a       lda #$09
+$060c       sta $0226

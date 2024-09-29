@@ -1,0 +1,14 @@
+;7) Escriba un programa que compare el valor almacenado en el registro
+;A con otro valor. Si ambos valores son iguales, el programa debe restar
+;uno al valor del acumulador.
+
+lda #$56    ;carga el valor 56 en al acumulador
+sta $02     ;guarda en la direccion 02
+lda #$56    ;carga el avlor 56 en el acumulador
+cmp $02     ;compara el acumulador con la direccion 02
+beq restar  ;salta si es igual
+brk         ;finaliza el programa
+
+restar:     ;etiqueta 
+sec         ;setea el carry
+sbc #$01    ;resta al acumulador

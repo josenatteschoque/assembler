@@ -1,0 +1,15 @@
+;8) Suponiendo que se realiza un sorteo en el que 15 personas resultarán
+;ganadoras, se necesita un código que obtenga dichos números y los
+;almacene en memoria.
+
+
+lda #$00        ;inicia el acumulador en 0
+sorteo:         ;etiqueta
+lda $fe         ;carga en el acumulador el valor aleatorio
+sta $0700,x     ;guarda en la direccion 0700 mas el registro X
+cpx #$0f        ;compara con el registro X
+beq fin         ;salta ala etiqueta fin si es igual
+inx             ;incrementa el registro X
+jmp sorteo      ;salta ala etiqueta sorteo
+fin:            ;etiqueta
+brk             ;finaliza el programa

@@ -1,0 +1,10 @@
+;6) Escriba un programa en el que en la mitad de la pantalla los colores que 
+;cambien de forma aleatoria.
+
+ldx #$00    ;inicia el registro x en 0
+START:      ;esta es una etiqueta que inicia el bucle
+lda $fe     ;carga el valor aleatorio en el acumulador 
+sta $0200,x ;guarda el valor en la direccion 0200 mas x
+sta $0300,x ;guarda el valor en la direccion 0300 mas x
+inx         ;incrementa el registro x
+jmp START   ;salta ala etiquete START a repetir el proceso 

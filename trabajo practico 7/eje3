@@ -1,0 +1,9 @@
+;3) Se quiere escribir un programa que realice las siguientes operaciones:
+;15+10
+;7-3
+
+lda #$15      ;carga el valor 15 en el acumulador
+sta $0300     ;guarda el valor en la direccion 0300
+clc           ;limpia el carry para la
+adc #$10      ;suma 10 al acumulador
+sta $0301     ;guarda el resultado en la direccion 0301

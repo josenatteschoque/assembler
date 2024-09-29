@@ -1,0 +1,18 @@
+;5) Escriba un programa para pintar la pantalla de la siguiente forma:
+;franja 1 rojo
+;franja 2 gris
+;franja 3 verde 
+;franja 4 celeste
+
+ldx $00       ;Inicializa el registro X a 0, que se utilizará para indexar las franjas.
+START:        ;Esta es una etiqueta que indica el comienzo de un bucle.
+lda #$02      ;Carga el valor $02 en el acumulador A, que representa el color rojo.
+sta $200,x    ;Almacena el color del acumulador A en la dirección $200 más el valor de X, que cambia en cada iteración.
+lda #$0c      ;Carga el color gris.
+sta $300,x    ;Almacena el color gris en la dirección $300.
+lda #$05      ;Carga el color verde.
+sta $400,x    ;Almacena el color verde en la dirección $400.
+lda #$0e      ;Carga el color celeste.
+sta $500,x    ;Almacena el color celeste en la dirección $500.
+inx           ;Incrementa el registro X en 1.
+jmp START     ;Salta de nuevo al inicio del bucle para repetir el proceso.

@@ -1,0 +1,13 @@
+;4) Se requiere transferir el valor f1 del acumulador al registro X. Luego,
+;debe disminuir en uno el valor del registro X y sumarle un número a
+;elección. El resultado de esta operación debe guardarse en la
+;dirección de memoria 0750.
+
+lda #$f1        ;cargo el valor f1 en el acumulador
+tax             ;tranfiere el acumulador al registro X
+dex             ;decrementa el contenido el registro X
+txa             ;tranfiere el registro X al acumulador
+clc             ;limpia el carry
+adc #$02        ;suma el valor 02 al acumulador
+tax             ;tranfiere el acumulador al registro X
+stx $0750       ;guarda el valor del registro X en la dirección 0750

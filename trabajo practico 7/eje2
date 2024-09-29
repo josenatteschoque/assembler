@@ -1,0 +1,6 @@
+;2) Copie el código en el programa ensamblador. Ensamble el código.
+;Explique cómo funciona.
+
+lda #$67    ;carga el valor 67 en el acumulador 
+sta $03     ;guarda el valor en la direccion 03
+adc $03     ;suma 03 al acumulador

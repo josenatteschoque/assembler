@@ -1,0 +1,9 @@
+;1) Se quiere almacenar el contenido del acumulador, que tiene un valor
+;de 03, en la dirección de memoria 0300. Después, se le debe sumar 05
+;a este valor y almacenar el resultado en la dirección de memoria 0301.
+
+lda #$03    ;se almacena el valor 03 en el acumulador 
+sta $0300   ;se guarda en la direccion 0300
+clc         ;se limpia el carry para la operacion suma
+adc #$05    ;suma al acumulador  el valor 05
+sta $0301   ;guarda el resultado en la direccion 0301

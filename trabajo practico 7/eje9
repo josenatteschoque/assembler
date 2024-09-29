@@ -1,0 +1,8 @@
+;9) Copie el código en el programa ensamblador. Compile el código y
+;luego ejecute.
+
+lda #$co    ;guarda el valor en el acumulador
+tax         ;tranfiere el valor del acumulador al registro x
+dex         ;declementa el registro x
+adc #$c4    ;le suma al acumulador el valor c4 
+brk         ;finaliza le programa 

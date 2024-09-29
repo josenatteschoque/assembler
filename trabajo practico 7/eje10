@@ -1,0 +1,8 @@
+; Reescriba el programa anterior utilizando el registro Y en lugar del
+;registro X.
+
+lda #$co    ;carga el valor co en el acumulador
+tay         ;tranfiere el acumulador al registro Y
+dey         ;declementa el registro Y
+adc #$c4    ;suma el valor c4 al acumulador
+brk         ;finaliza el programa
