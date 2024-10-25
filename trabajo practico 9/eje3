@@ -1,0 +1,14 @@
+;3. Escribir un programa que utilice una subrutina para realizar la suma de dos
+;números.
+
+lda #$08        ;Carga el acumulador (A) con el valor inmediato 0x08 (que es 8 en decimal).
+sta $01         ;Almacena el valor del acumulador (8) en la dirección de memoria $01.
+lda #$07        ;Carga el acumulador con el valor inmediato 0x07 (7 en decimal).
+sta $02         ;Almacena el valor del acumulador (7) en la dirección de memoria $02.
+jsr sumas       ;Salta a la subrutina sumas, que ejecutará el código que comienza en la etiqueta sumas.
+brk             ;Esta instrucción genera una interrupción de ruptura, que generalmente indica el final del programa o detiene la ejecución.
+
+sumas:          
+clc             ;Limpia la bandera de carry. Esto se hace a menudo antes de realizar una suma para asegurar que cualquier carry previo no afecte la operación actual.
+adc $01         ;Suma el valor almacenado en la dirección de memoria $01 (que es 8) al acumulador (que actualmente es 7 por la instrucción anterior lda). El resultado será 15 (7 + 8).
+rts             ;Retorna de la subrutina. Esto devolverá el control a la instrucción siguiente a la jsr (en este caso, la instrucción brk).

@@ -1,0 +1,16 @@
+;6. Incorporar las subrutinas dentro de algunos de los programas realizados en
+;los prácticos 7 y 8
+
+lda #$c0        ;Carga el acumulador (A) con el valor inmediato 0xC0 (que es 192 en decimal).
+jsr dividir     ;Salta a la subrutina dividir, que ejecutará el código que comienza en la etiqueta dividir.
+tay             ;Transfiere el valor del acumulador (192) al registro Y. Ahora el registro Y contiene 192.
+dey             ;Decrementa el valor del registro Y en 1. Ahora, el registro Y contiene 191.
+adc #$c4        ;Suma el valor inmediato 0xC4 (196 en decimal) al acumulador. Dado que el acumulador contenía inicialmente 0xC0, después de esta suma, el acumulador contendrá:
+;0xC0 + 0xC4 = 0x184 (que es 388 en decimal).
+brk             ;Esta instrucción genera una interrupción de ruptura, que generalmente indica el final del programa o detiene la ejecución.
+
+dividir:
+lsr             ;Esta instrucción realiza un desplazamiento lógico a la derecha en el acumulador. Esto efectivamente divide el valor en el acumulador (192) por 2:
+;192 / 2 = 96 (en binario, 11000000 se convierte en 01100000).
+;El nuevo valor del acumulador es 96.
+rts             ;Retorna de la subrutina. Esto devolverá el control a la instrucción siguiente a la jsr.

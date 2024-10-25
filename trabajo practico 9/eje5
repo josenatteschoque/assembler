@@ -1,0 +1,14 @@
+5. Escribir un programa que utilice una subrutina para multiplicar dos
+números.
+
+lda #$04              ;Carga el acumulador (A) con el valor inmediato 0x04 (que es 4 en decimal).
+sta $01               ;Almacena el valor del acumulador (4) en la dirección de memoria $01.
+lda #$02              ;Carga el acumulador con el valor inmediato 0x02 (2 en decimal).
+sta $02               ;Almacena el valor del acumulador (2) en la dirección de memoria $02.
+jsr multiplicar       ;Salta a la subrutina multiplicar, que ejecutará el código que comienza en la etiqueta multiplicar.
+brk                   ;Esta instrucción genera una interrupción de ruptura, que generalmente indica el final del programa o detiene la ejecución.
+
+multiplicar:
+asl $01               ;Esta instrucción realiza un desplazamiento lógico a la izquierda en el valor almacenado en la dirección de memoria $01. Esto equivale a multiplicar el valor por 2. Si $01 contenía 4, después de esta instrucción, su valor será 8 (4 * 2).
+asl $02               ;Esta instrucción realiza un desplazamiento lógico a la izquierda en el valor almacenado en la dirección de memoria $02. Si $02 contenía 2, después de esta instrucción, su valor será 4 (2 * 2).
+rts                   ;Retorna de la subrutina. Esto devolverá el control a la instrucción siguiente a la jsr (en este caso, la instrucción brk).

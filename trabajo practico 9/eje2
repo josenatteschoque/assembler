@@ -1,0 +1,19 @@
+;2. El siguiente código tiene tres subrutinas. Analice qué hace cada una.
+
+    jsr init
+    jsr loop
+    jsr end
+
+init:       ;inicia el registro X
+    ldx #$00
+    rts
+
+
+loop:       ;incrementa X y lo compara con un valor lo hace hasta que sean iguales
+    inx 
+    cpx #$05
+    bne loop
+    rts
+
+end:        ;finaliza el programa
+    brk

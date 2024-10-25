@@ -1,0 +1,11 @@
+;4. Escribir un programa que utilice una subrutina para dividir un número por
+;dos.
+
+lda #$08        ;Carga el acumulador (A) con el valor inmediato 0x08 (que es 8 en decimal).
+sta $02         ;Almacena el valor del acumulador (8) en la dirección de memoria $02.
+jsr dividir     ;Salta a la subrutina dividir, que ejecutará el código que comienza en la etiqueta dividir.
+brk             ;Esta instrucción genera una interrupción de ruptura, que generalmente indica el final del programa o detiene la ejecución.
+
+dividir:
+lsr             ;Esta instrucción realiza un desplazamiento lógico a la derecha en el acumulador. Al desplazar el valor en el acumulador una posición a la derecha, efectivamente divide el valor por 2. En este caso, el valor 8 se convierte en 4 (8 dividido por 2).
+rts             ;Retorna de la subrutina. Esto devolverá el control a la instrucción siguiente a la jsr (en este caso, la instrucción brk).

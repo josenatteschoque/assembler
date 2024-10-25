@@ -1,0 +1,32 @@
+;1. Analizar el siguiente programa. Explicar qué es lo que hace.
+
+LDA #$05
+STA $41       ; Guarda 0x05 en $41
+LDA #$67
+STA $42       ; Guarda 0x67 en $42
+LDA #$79
+STA $43       ; Guarda 0x79 en $43
+LDA #$15
+STA $44       ; Guarda 0x15 en $44
+LDA #$E3
+STA $45       ; Guarda 0xE3 en $45
+LDA #$72
+STA $46       ; Guarda 0x72 en $46
+
+
+LDX $41       ; Carga el valor en $41 (0x05) en X
+LDA #$00      ; Inicializa el acumulador a 0
+
+UNO:
+CMP $41,X      ; Compara el valor en el acumulador con el valor en la dirección ($41 + X)
+BCS DOS        ; Si el valor en el acumulador es mayor o igual, salta a "DOS"
+LDA $41,X      ; Si no, carga el valor de ($41 + X) en el acumulador
+
+DOS:
+DEX            ; Decrementa el registro X
+BNE UNO        ; Si X no es cero, vuelve a "UNO"
+STA $40        ; Almacena el valor final del acumulador en $40
+BRK            ; Termina el programa
+
+;El programa busca encontrar el mayor valor entre las posiciones de memoria desde $41 hasta 
+;($41 + X inicial)
