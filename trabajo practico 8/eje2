@@ -1,0 +1,15 @@
+;2. Se desea realizar la multiplicación de dos números de 8 bits utilizando
+;sumas.
+
+lda #$04                ;Carga el valor 4 (en hexadecimal $04) en el acumulador.
+sta $0700               ;Almacena el valor 4 en la dirección de memoria $0700.
+lda #$05                ;Carga el valor 5 (en hexadecimal $05) en el acumulador.
+sta $0701               ;Almacena el valor 5 en la dirección de memoria $0701.
+ldx #$00                ;Carga 0 en el registro X para usarlo como contador.
+multiplicacion:         ;Etiqueta que marca el inicio del bucle de multiplicación.
+clc                     ;Limpia el acarreo (Carry flag), asegurando que no haya residuos de operaciones anteriores.
+adc $0700               ;Suma el valor en la dirección de memoria $0700 (que es 4) al acumulador. Como el acarreo está limpio, realiza una suma estándar.
+inx                     ;Incrementa el registro X en 1 (contador).
+cpx $0701               ;Compara el valor de X con el valor almacenado en $0701 (que es 5).
+bne multiplicacion      ;Si X no es igual a 5, salta de nuevo a la etiqueta multiplicación y repite el proceso.
+brk                     ;Interrumpe la ejecución del programa (fin del bucle y el programa).

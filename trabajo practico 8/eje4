@@ -1,0 +1,17 @@
+;4. Escribe un programa que almacene los valores de un número, empezando
+;desde el número 10 y aumentando de 2 en 2, en direcciones de memoria
+;consecutivas. El almacenamiento debe continuar hasta que el valor del
+;registro Y sea menor que 30. El valor inicial de Y debe ser 60.
+
+lda #$10            ;Carga el valor 16 (en hexadecimal $10) en el acumulador.
+ldy #$60            ;Carga el valor 96 (en hexadecimal $60) en el registro Y.
+ldx #$00            ;Carga el valor 0 en el registro X para usarlo como índice.
+numeros:            ;Etiqueta que marca el inicio del bucle.
+sta $0200,x         ;Almacena el valor del acumulador en la dirección de memoria $0200 + X. Inicialmente, X es 0, así que almacena el valor en $0200. En cada iteración, X aumenta, así que el valor se guarda en la siguiente dirección consecutiva ($0201, $0202, etc.).
+clc                 ;Limpia el acarreo (Carry flag), preparando el acumulador para una suma estándar.
+adc #$02            ;Suma 2 al valor del acumulador, incrementándolo. Esto significa que en cada iteración, el valor que se va a almacenar aumentará en 2.
+inx                 ;Incrementa el registro X en 1. Esto mueve el índice a la siguiente posición de memoria en la que se almacenará el próximo valor.
+dey                 ;Decrementa el registro Y en 1. Actúa como un contador para controlar cuántas veces se repite el bucle.
+cpy #$30            ;Compara el valor en el registro Y con 48 (hexadecimal $30).
+bne numeros         ;Si Y no es igual a 48, vuelve a la etiqueta numeros y repite el proceso.
+brk                 ;Interrumpe la ejecución del programa (fin del bucle y el programa).

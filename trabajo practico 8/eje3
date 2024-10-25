@@ -1,0 +1,21 @@
+;3. Escribe un programa que compare los valores de dos números, A y B. Si el
+;valor de A es mayor que el valor de B, entonces se debe desplazar el valor
+;de A un bit hacia la izquierda. Si el valor de A no es mayor que el valor de B,
+;entonces se debe incrementar el valor de B en 1.
+
+
+lda #$07        ;Carga el valor 7 (en hexadecimal $07) en el acumulador. Este es el valor A. 
+cmp #$05        ;Compara el valor del acumulador (A = 7) con 5 (que sería B).
+
+bpl amayor     ;Si el valor en el acumulador (A) es mayor o igual a 5 (B), se ejecuta un salto a la etiqueta amayor. La instrucción bpl se utiliza aquí para verificar si el resultado de la comparación es positivo (o cero), lo que ocurre si A ≥ B.
+bmi amenor     ;Si el valor en el acumulador (A) es menor que 5 (B), salta a la etiqueta amenor. La instrucción bmi indica que el resultado de la comparación es negativo, lo que ocurre si A < B.
+amayor:        ;Etiqueta que se ejecuta si A es mayor o igual a B.
+lda #$07       ;Carga nuevamente el valor 7 en el acumulador.
+asl            ;Realiza un desplazamiento aritmético a la izquierda (equivale a multiplicar por 2). Así, el valor 7 se convierte en 14.
+brk            ;Interrumpe la ejecución del programa (fin del programa).
+
+amenor:        ;Etiqueta que se ejecuta si A es menor que B.
+lda #$05       ;Carga el valor 5 en el acumulador.
+clc            ;Limpia el acarreo (Carry flag) para una suma estándar.
+adc #$01       ;Suma 1 al valor en el acumulador, dando como resultado 6.
+brk            ;Interrumpe la ejecución del programa (fin del programa).

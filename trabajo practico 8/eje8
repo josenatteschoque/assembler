@@ -1,0 +1,16 @@
+;8. Crea un programa que a partir de 2 números almacenados en memoria,
+;encuentre el número más grande y lo almacene en otra dirección de
+;memoria
+
+lda #$45        ; Carga el valor 0x45 (69 en decimal) en el acumulador
+sta $00         ; Almacena 69 en la dirección de memoria $00
+lda #$90        ; Carga el valor 0x90 (144 en decimal) en el acumulador
+sta $01         ; Almacena 144 en la dirección de memoria $01
+lda $01         ; Carga el valor en la dirección $01 (144) al acumulador
+cmp $00         ; Compara el valor en el acumulador (144) con el valor en $00 (69)
+bpl mayor       ; Si el resultado es positivo o igual (mayor o igual), salta a "mayor"
+brk             ; Fin del programa si es menor
+
+mayor:
+sta $05         ; Almacena el valor (144) en la dirección $05
+brk             ; Fin del programa

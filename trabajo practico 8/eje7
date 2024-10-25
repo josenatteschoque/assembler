@@ -1,0 +1,16 @@
+;7. Escribe un programa que calcule la suma de los números del 1 al 10 y
+;almacene el resultado en una dirección de memoria específica.
+
+lda #$01        ; Carga 1 en el acumulador
+sta $00         ; Almacena 1 en la dirección $00
+lda #$0a        ; Carga 10 en el acumulador
+sta $01         ; Almacena 10 en la dirección $01
+ldx #$0a        ; Carga 5 en el registro X (número de iteraciones)
+clc             ; Limpia el acarreo para asegurar sumas correctas
+sumas:          
+adc $00         ; Suma el valor en $00 al acumulador
+inc $00         ; Incrementa el valor en $00 (preparando para la próxima suma)
+dex             ; Decrementa X (contador de bucle)
+bne sumas       ; Si X no es 0, repite el bucle
+sta $00         ; Almacena el resultado del acumulador en $00
+brk             ; Fin del programa

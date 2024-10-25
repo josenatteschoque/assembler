@@ -1,0 +1,24 @@
+;6. Escribe un programa que tome el número $84 y ponga en 1 los bits 0 y 3.
+;Luego, compare el resultado con el número $85:
+;● Si el resultado es menor que $85, almacene el número resultante en
+;la dirección de memoria $F0.
+;● Si el resultado es mayor o igual que $85, almacene el número
+;resultante en la dirección de memoria F1.
+
+lda #$84          ; Carga el valor $84 en el acumulador
+asl               ; Desplaza a la izquierda, moviendo los bits una posición a la izquierda
+ror               ; Rota hacia la derecha para establecer el bit 0 en 1
+sec               ; Establece el acarreo para asegurar que el bit 3 también esté en 1
+ror               ; Otra rotación para llevar el acarreo al bit 3
+cmp #$85          ; Compara el resultado con $85
+
+bmi menor         ; Si el resultado es menor que $85, salta a "menor"
+bpl mayor         ; Si el resultado es mayor o igual que $85, salta a "mayor"
+
+mayor:
+sta $f1           ; Almacena el resultado en $F1
+brk               ; Fin del programa
+
+menor:
+sta $f0           ; Almacena el resultado en $F0
+brk               ; Fin del programa

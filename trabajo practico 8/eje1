@@ -1,0 +1,15 @@
+;1. Se requiere comparar el valor almacenado en el registro A con otro valor. Si
+;ambos valores son iguales, se debe multiplicar por dos el valor del
+;acumulador.
+
+lda #$04          ;carga el valor 4 (en hexadecimal $04) en el acumulador.
+sta $02           ;Almacena el valor del acumulador en la dirección de memoria $02.
+lda #$04          ;Carga nuevamente el valor 4 en el acumulador.
+cmp $02           ;Compara el valor del acumulador con el valor almacenado en la dirección de memoria $02.
+beq multiplicar   ;Si el valor en el acumulador es igual al valor en $02, salta a la etiqueta ;multiplicar.
+brk               ;Interrumpe la ejecución del programa (fin del programa si no se cumple la condición anterior).
+En la etiqueta multiplicar:
+
+multiplicar:     ;Etiqueta que marca el inicio de la rutina de multiplicación.
+asl              ;Realiza un desplazamiento aritmético a la izquierda (esto equivale a multiplicar por 2).
+brk              ;Interrumpe la ejecución del programa (fin del programa).

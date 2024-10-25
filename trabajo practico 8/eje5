@@ -1,0 +1,14 @@
+;5. Escribe un programa que realice una cuenta regresiva del registro X,
+;iniciando con el valor 255. Los valores de X deben almacenarse en
+;direcciones de memoria consecutivas, comenzando desde la dirección de
+;memoria $57.
+
+
+ldx #$ff        ; Inicia X con 255
+ldy #$00        ; Inicia Y con 0 para usarlo como offset
+loop:           
+stx $57,y       ; Almacena el valor de X en la dirección $57 + Y
+dex             ; Decrementa X en 1
+iny             ; Incrementa Y en 1 para mover el siguiente almacenamiento
+bne loop        ; Repite el bucle hasta que X sea 0
+brk             ; Fin del programa
